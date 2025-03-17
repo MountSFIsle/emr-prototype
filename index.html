@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EMR Prototype</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 20px; }
+        .container { width: 300px; margin: auto; text-align: center; }
+        .button { display: block; margin: 10px 0; padding: 10px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; cursor: pointer; }
+        input { width: 80%; padding: 8px; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <div id="login" class="container">
+        <h2>EMR System Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button class="button" onclick="login()">Login</button>
+    </div>
+
+    <div id="dashboard" class="container" style="display:none;">
+        <h2>Dashboard</h2>
+        <a href="#patients" class="button">View Patients</a>
+        <a href="#appointments" class="button">View & Schedule Appointments</a>
+        <a href="#messages" class="button">Inbox</a>
+        <a href="#updates" class="button">Patient Activity Log</a>
+        <a href="#settings" class="button">Settings</a>
+        <button class="button" onclick="logout()">Logout</button>
+    </div>
+
+    <div id="patients" class="container" style="display:none;">
+        <h2>Patients</h2>
+        <a href="#patient_profile" class="button">Alex Carter</a>
+        <a href="#dashboard" class="button">Back to Dashboard</a>
+    </div>
+
+    <div id="patient_profile" class="container" style="display:none;">
+        <h2>Alex Carter</h2>
+        <p>Medical History: Type 2 Diabetes</p>
+        <p>Prescriptions: Metformin</p>
+        <a href="#dashboard" class="button">Back to Dashboard</a>
+    </div>
+
+    <div id="appointments" class="container" style="display:none;">
+        <h2>Appointments</h2>
+        <p>Next: March 20, 2025</p>
+        <a href="#dashboard" class="button">Back to Dashboard</a>
+    </div>
+
+    <div id="messages" class="container" style="display:none;">
+        <h2>Inbox</h2>
+        <p>No new messages</p>
+        <a href="#dashboard" class="button">Back to Dashboard</a>
+    </div>
+
+    <div id="updates" class="container" style="display:none;">
+        <h2>Patient Activity Log</h2>
+        <p>March 16, 2025, 10:15 AM - Alex Carter’s blood test results received</p>
+        <p>March 15, 2025, 2:45 PM - New allergy noted for Jamie Lee (Penicillin)</p>
+        <p>March 14, 2025, 9:30 AM - Routine checkup completed for Sam Torres</p>
+        <a href="#dashboard" class="button">Back to Dashboard</a>
+    </div>
+
+    <div id="settings" class="container" style="display:none;">
+        <h2>Settings</h2>
+        <p>Profile Settings</p>
+        <p>Notification Preferences</p>
+        <a href="#dashboard" class="button">Back to Dashboard</a>
+    </div>
+
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            
+            if (username === "admin" && password === "password") {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("dashboard").style.display = "block";
+            } else {
+                alert("Invalid username or password. Please try again.");
+            }
+        }
+
+        function logout() {
+            document.getElementById("dashboard").style.display = "none";
+            document.getElementById("login").style.display = "block";
+        }
+
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', function(event) {
+                if (!this.hasAttribute('onclick')) {
+                    event.preventDefault();
+                    document.querySelectorAll('.container').forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    const targetId = this.getAttribute('href');
+                    document.querySelector(targetId).style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
