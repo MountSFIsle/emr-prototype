@@ -1,24 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>EMR Prototype</title>
+    <title>Wellness EMR System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An accessible and wellness-focused EMR system prototype.">
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 20px; }
-        .container { width: 300px; margin: auto; text-align: center; }
-        .button { display: block; margin: 15px 0; padding: 15px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; cursor: pointer; font-size: 18px; }
-        input { width: 80%; padding: 10px; margin: 5px 0; font-size: 16px; }
+        body { font-family: Arial, sans-serif; background-color: #e3f2fd; margin: 20px; line-height: 1.6; }
+        .container { width: 450px; margin: auto; text-align: center; background: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
+        .button { display: block; margin: 15px 0; padding: 15px; background: #007BFF; color: white; text-decoration: none; border-radius: 5px; cursor: pointer; font-size: 18px; border: none; }
+        .button:focus, .button:hover { background: #0056b3; outline: 3px solid #ffcc00; }
+        input { width: 80%; padding: 10px; margin: 5px 0; font-size: 16px; border: 1px solid #ccc; border-radius: 5px; }
+        input:focus { border-color: #007BFF; outline: 2px solid #007BFF; }
+        .header { font-size: 24px; font-weight: bold; color: #007BFF; margin-bottom: 20px; }
+        .image-container { margin-top: 15px; }
+        .image-container img { width: 120px; height: auto; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
     </style>
 </head>
 <body>
     <div id="login" class="container">
-        <h2>EMR System Login</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
+        <div class="header">Wellness EMR System</div>
+        <h2>Login</h2>
+        <label for="username" class="sr-only">Username</label>
+        <input type="text" id="username" placeholder="Username" aria-label="Username">
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" id="password" placeholder="Password" aria-label="Password">
         <button class="button" onclick="login()">Login</button>
         <button class="button" onclick="guestLogin()">Guest Login</button>
+        <div class="image-container"><img src="https://via.placeholder.com/120" alt="Green Leaf for Wellness"></div>
     </div>
 
     <div id="dashboard" class="container" style="display:none;">
+        <div class="header">Wellness EMR System</div>
         <h2>Dashboard</h2>
         <a href="#patients" class="button">View Patients</a>
         <a href="#appointments" class="button">View & Schedule Appointments</a>
@@ -26,46 +40,31 @@
         <a href="#updates" class="button">Patient Activity Log</a>
         <a href="#settings" class="button">Settings</a>
         <button class="button" onclick="logout()">Logout</button>
+        <div class="image-container"><img src="https://via.placeholder.com/120" alt="Wellness Stones"></div>
     </div>
 
     <div id="patients" class="container" style="display:none;">
-        <h2>Patients</h2>
-        <a href="#patient_profile" class="button">Alex Carter</a>
+        <div class="header">Wellness EMR System</div>
+        <h2>Current Patients</h2>
+        <a href="#patient_profile_1" class="button">Alex Carter</a>
+        <a href="#patient_profile_2" class="button">Jamie Lee</a>
+        <a href="#patient_profile_3" class="button">Sam Torres</a>
+        <a href="#patient_profile_4" class="button">Jordan Smith</a>
+        <a href="#patient_profile_5" class="button">Chris Adams</a>
         <a href="#dashboard" class="button">Back to Dashboard</a>
-    </div>
-
-    <div id="patient_profile" class="container" style="display:none;">
-        <h2>Alex Carter</h2>
-        <p>Medical History: Type 2 Diabetes</p>
-        <p>Prescriptions: Metformin</p>
-        <a href="#dashboard" class="button">Back to Dashboard</a>
-    </div>
-
-    <div id="appointments" class="container" style="display:none;">
-        <h2>Appointments</h2>
-        <p>Next: March 20, 2025</p>
-        <a href="#dashboard" class="button">Back to Dashboard</a>
-    </div>
-
-    <div id="messages" class="container" style="display:none;">
-        <h2>Inbox</h2>
-        <p>No new messages</p>
-        <a href="#dashboard" class="button">Back to Dashboard</a>
+        <div class="image-container"><img src="https://via.placeholder.com/120" alt="Aromatic Candle"></div>
     </div>
 
     <div id="updates" class="container" style="display:none;">
-        <h2>Patient Activity Log</h2>
-        <p>March 16, 2025, 10:15 AM - Alex Carter’s blood test results received</p>
-        <p>March 15, 2025, 2:45 PM - New allergy noted for Jamie Lee (Penicillin)</p>
-        <p>March 14, 2025, 9:30 AM - Routine checkup completed for Sam Torres</p>
+        <div class="header">Wellness EMR System</div>
+        <h2>Today's Patient Activity</h2>
+        <p>March 17, 2025, 9:00 AM - Alex Carter’s blood pressure check completed.</p>
+        <p>March 17, 2025, 9:30 AM - Jamie Lee’s new allergy (Peanuts) added.</p>
+        <p>March 17, 2025, 10:00 AM - Sam Torres’s annual physical completed.</p>
+        <p>March 17, 2025, 10:30 AM - Jordan Smith’s prescription updated.</p>
+        <p>March 17, 2025, 11:00 AM - Chris Adams’ lab results received.</p>
         <a href="#dashboard" class="button">Back to Dashboard</a>
-    </div>
-
-    <div id="settings" class="container" style="display:none;">
-        <h2>Settings</h2>
-        <p>Profile Settings</p>
-        <p>Notification Preferences</p>
-        <a href="#dashboard" class="button">Back to Dashboard</a>
+        <div class="image-container"><img src="https://via.placeholder.com/120" alt="Herbal Tea"></div>
     </div>
 
     <script>
@@ -90,19 +89,6 @@
             document.getElementById("dashboard").style.display = "none";
             document.getElementById("login").style.display = "block";
         }
-
-        document.querySelectorAll('.button').forEach(button => {
-            button.addEventListener('click', function(event) {
-                if (!this.hasAttribute('onclick')) {
-                    event.preventDefault();
-                    document.querySelectorAll('.container').forEach(section => {
-                        section.style.display = 'none';
-                    });
-                    const targetId = this.getAttribute('href');
-                    document.querySelector(targetId).style.display = 'block';
-                }
-            });
-        });
     </script>
 </body>
 </html>
